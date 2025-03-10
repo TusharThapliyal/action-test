@@ -7,10 +7,20 @@ jobs:
     steps:
       - name: checkout 
         uses: actions/checkout@v4
+        
       - name: list file
         run: ls -ltar
+        
       - name: changing permissions for ascii.sh
-        run: chmod +x ascii.sh
+        run: |
+          pwd
+          ls -la
+          ls -la | grep ascii.sh
+          chmod +x ascii.sh
+        
       - name: executing the script
-        run: ./ascii.sh
+        run: |
+          pwd
+          ls -la
+          ./ascii.sh
           
