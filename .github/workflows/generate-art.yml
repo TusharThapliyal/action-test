@@ -7,15 +7,8 @@ jobs:
     steps:
       - name: checkout 
         uses: actions/checkout@v4
-      - name: install cowsay programm
-        run: sudo apt install cowsay -y 
-      - name: execute cowsay
+      - name: running ascii.sh
         run: |
-          cowsay -f dragon "I am a dragon" >> art.txt
-      - name: text file exists
-        run: grep -i "dragon" art.txt
-      -  name: read text file
-         run: cat art.txt
-      -  name: check repo files
-         run: ls
+          sudo chmod +x ascii.sh
+          ./ascii.sh
           
