@@ -11,6 +11,4 @@ jobs:
         echo "welcome to github actions"
         ls -la
         cat README.md
-    - name: Generate ASCII artwork
-      run: |
-        cowsay -f dragon "I am a dragon" >> art.txt
+
