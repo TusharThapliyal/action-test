@@ -7,8 +7,10 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4
     - name: welcome message
-      run: echo "welcome to github actions"
-    - name: list files
-      run: ls -l
-    - name: read README.md
-      run: cat README.md
+      run: | 
+        echo "welcome to github actions"
+        ls -la
+        cat README.md
+    - name: Generate ASCII artwork
+      run: |
+        cowsay -f dragon "I am a dragon" >> art.txt
