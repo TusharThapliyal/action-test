@@ -9,19 +9,23 @@ jobs:
     steps:
       - name: install cowsay
         run: sudo apt install cowsay -y
+        
       - name: running cowsay command
         run: cowsay -f dragon "Hi" >> art.txt
-  
+    
   test:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       -  name: checking if file exists
          run: ls -l | grep art.txt
   
   deploy:
     runs-on: ubuntu-latest
-    steps:  
+    needs: test
+    steps:
       -  name: print to screen
          run: cat art.txt
+         
       -  name: deploy
          run: echo "deploying....."
