@@ -12,15 +12,18 @@ jobs:
         run: ls -ltar
         
       - name: changing permissions for ascii.sh
-        run: |
-          pwd
-          ls -la
-          ls -la | grep ascii.sh
-          chmod +x ascii.sh
-        
+        run: chmod +x ascii.sh
+#        run: |
+#          pwd
+#          ls -la
+#          ls -la | grep ascii.sh
+#          chmod +x ascii.sh
+
+         
       - name: executing the script
-        run: |
-          pwd
-          ls -la
-          bash /home/runner/work/action-test/action-test/ascii.sh
+        run: ./ascii.sh
+#        run: |
+#         pwd
+#          ls -la
+#          bash /home/runner/work/action-test/action-test/ascii.sh
           
