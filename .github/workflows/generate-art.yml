@@ -22,5 +22,5 @@ jobs:
         run: |
           pwd
           ls -la
-          ./ascii.sh
+          bash /home/runner/work/action-test/action-test/ascii.sh
           
