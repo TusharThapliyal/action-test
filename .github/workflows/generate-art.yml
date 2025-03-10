@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: checkout 
         uses: actions/checkout@v4
+      - name: list file
+        run: ls -ltar
       - name: running ascii.sh
         run: |
           sudo chmod +x ascii.sh
