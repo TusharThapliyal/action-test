@@ -13,17 +13,10 @@ jobs:
         
       - name: changing permissions for ascii.sh
         run: chmod +x ascii.sh
-#        run: |
-#          pwd
-#          ls -la
-#          ls -la | grep ascii.sh
-#          chmod +x ascii.sh
 
-         
       - name: executing the script
-        run: ./ascii.sh
-#        run: |
-#         pwd
-#          ls -la
-#          bash /home/runner/work/action-test/action-test/ascii.sh
+        run: |
+          pwd
+          ls -la
+           bash ../../action-test/action-test/ascii.sh
           
