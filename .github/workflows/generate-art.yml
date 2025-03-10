@@ -11,6 +11,6 @@ jobs:
         run: ls -ltar
       - name: running ascii.sh
         run: |
-          sudo chmod +x ascii.sh
+          chmod +x ascii.sh
           ./ascii.sh
           
