@@ -6,3 +6,7 @@ jobs:
     steps:
     - name: welcome message
       run: echo "welcome to github actions"
+    - name: list files
+      run: ls -l
+    - name: read README.md
+      run: cat README.md
