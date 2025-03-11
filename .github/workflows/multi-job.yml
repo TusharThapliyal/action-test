@@ -16,8 +16,8 @@ jobs:
       - name: upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: art.txt
-          path: output/artifact/ 
+          name: art
+          path: art.txt
     
   test:
     runs-on: ubuntu-latest
@@ -26,7 +26,7 @@ jobs:
       - name: download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: art.txt
+          name: art
 
       -  name: checking if file exists
          run: ls -l | grep art.txt
@@ -38,7 +38,8 @@ jobs:
       - name: download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: art.txt
+          name: art
+          
       -  name: print to screen
          run: cat art.txt
          
