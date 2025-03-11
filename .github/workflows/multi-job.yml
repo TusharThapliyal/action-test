@@ -12,11 +12,22 @@ jobs:
         
       - name: running cowsay command
         run: cowsay -f dragon "Hi" >> art.txt
+
+      - name: upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: art.txt
+          path: output/artifact/ 
     
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: art.txt
+
       -  name: checking if file exists
          run: ls -l | grep art.txt
   
@@ -24,6 +35,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
+      - name: download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: art.txt
       -  name: print to screen
          run: cat art.txt
          
