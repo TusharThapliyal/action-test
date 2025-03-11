@@ -1,0 +1,30 @@
+name: workflow-with-env-variables
+on: 
+  push
+env:
+  USERNAME: tusharthapliyal
+  PASSWORD: Tushar_docker_8979
+  REPO-NAME: action-test
+  DOCKER-REGISTERY: docker.io
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      -  name: puling nginx
+         run: |
+           docker pull nginx:latest
+           docker image tag nginx:latest $DOCKER-REGISTERY/$USERNAME/$REPO-NAME:latest
+  
+  login:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      -  name: login to docker
+         run: docker login --username=$USERNAME --password=PASSWORD
+  
+  push:
+    needs: login
+    runs-on: ubuntu-latest
+    steps:
+      -  name: push to docker
+         run: docker push $DOCKER-REGISTERY/$USERNAME/$REPO-NAME:latest
