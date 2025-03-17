@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -  name: login to docker
-         run: docker login --username=$USERNAME --password=PASSWORD
+         run: docker login -u $USERNAME -p $PASSWORD
   
   push:
     needs: login
