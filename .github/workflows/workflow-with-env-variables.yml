@@ -13,16 +13,15 @@ jobs:
       -  name: puling nginx
          run: |
            docker pull nginx:latest
-           docker image tag nginx:latest $DOCKER_REGISTERY/$USERNAME/$REPO_NAME:latest
-
+           
       -  name: saving docker images as tar
-         run: docker save $DOCKER_REGISTERY/$USERNAME/$REPO_NAME:latest -o $REPO_NAME.tar
+         run: docker save nginx:latest -o image.tar
 
       - name: upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: $REPO_NAME
-          path: $REPO_NAME.txt
+          name: image
+          path: image.txt
   
   login_and_push:
     needs: build_and_save
@@ -34,7 +33,12 @@ jobs:
       - name: download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: $REPO_NAME
-          
+          name: image
+      
+      -  name: load image
+         run: docker image -i image.tar
+    
       -  name: push to docker
-         run: docker push $DOCKER_REGISTERY/$USERNAME/$REPO_NAME:latest
+         run: |
+          docker image tag nginx:latest $DOCKER_REGISTERY/$USERNAME/$REPO_NAME:latest
+          docker push $DOCKER_REGISTERY/$USERNAME/$REPO_NAME:latest
