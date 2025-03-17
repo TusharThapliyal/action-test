@@ -21,7 +21,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: image
-          path: image.txt
+          path: image.tar
   
   login_and_push:
     needs: build_and_save
