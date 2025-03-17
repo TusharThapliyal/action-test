@@ -36,7 +36,7 @@ jobs:
           name: image
       
       -  name: load image
-         run: docker image -i image.tar
+         run: docker image load -i image.tar
     
       -  name: push to docker
          run: |
