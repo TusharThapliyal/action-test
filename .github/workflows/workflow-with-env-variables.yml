@@ -7,17 +7,14 @@ env:
   REPO_NAME: action-test
   DOCKER_REGISTERY: docker.io
 jobs:
-  build:
+  build_and_save:
     runs-on: ubuntu-latest
     steps: 
       -  name: puling nginx
          run: |
            docker pull nginx:latest
            docker image tag nginx:latest $DOCKER_REGISTERY/$USERNAME/$REPO_NAME:latest
-  save: 
-    needs: build
-    runs-on: ubuntu:latest
-    steps:
+
       -  name: saving docker images as tar
          run: docker save $DOCKER_REGISTERY/$USERNAME/$REPO_NAME:latest -o $REPO_NAME.tar
 
@@ -27,17 +24,13 @@ jobs:
           name: $REPO_NAME
           path: $REPO_NAME.txt
   
-  login:
-    needs: save
+  login_and_push:
+    needs: build_and_save
     runs-on: ubuntu-latest
     steps:
       -  name: login to docker
          run: docker login -u $USERNAME -p $PASSWORD
-  
-  push:
-    needs: login
-    runs-on: ubuntu-latest
-    steps:
+
       - name: download build artifact
         uses: actions/download-artifact@v4
         with:
