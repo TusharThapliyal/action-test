@@ -4,8 +4,8 @@ on:
 env:
   USERNAME: tusharthapliyal
   PASSWORD: Tushar_docker_8979
-  REPO-NAME: action-test
-  DOCKER-REGISTERY: docker.io
+  REPO_NAME: action-test
+  DOCKER_REGISTERY: docker.io
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
       -  name: puling nginx
          run: |
            docker pull nginx:latest
-           docker image tag nginx:latest $DOCKER-REGISTERY/$USERNAME/$REPO-NAME:latest
+           docker image tag nginx:latest $DOCKER_REGISTERY/$USERNAME/$REPO_NAME:latest
   
   login:
     needs: build
@@ -27,4 +27,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -  name: push to docker
-         run: docker push $DOCKER-REGISTERY/$USERNAME/$REPO-NAME:latest
+         run: docker push $DOCKER_REGISTERY/$USERNAME/$REPO_NAME:latest
