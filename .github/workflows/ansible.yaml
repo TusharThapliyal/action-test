@@ -2,3 +2,10 @@ name: ansible
 
 on:
   workflow_dispatch:
+
+jobs:
+  print_user_name:
+    runs_on: ubuntu_latest
+    steps:
+      - name: echo username
+        run: whoami
