@@ -5,7 +5,7 @@ on:
 
 jobs:
   print_user_name:
-    runs_on: ubuntu_latest
+    runs-on: ubuntu_latest
     steps:
       - name: echo username
         run: whoami
