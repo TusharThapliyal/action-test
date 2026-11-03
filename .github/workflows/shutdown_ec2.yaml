@@ -1,0 +1,12 @@
+name: shutdown_ec2 - TT
+on:
+  # push:
+  #   branches: main
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  fetch-ec2:
+    runs-on: ubuntu-22.04
+    steps:
+      - id: 
